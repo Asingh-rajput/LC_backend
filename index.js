@@ -1,3 +1,5 @@
+const dotenv = require("dotenv");
+dotenv.config();
 const mongoose = require("mongoose");
 const cors = require("cors");
 const express = require("express");
@@ -6,8 +8,8 @@ const { Order } = require('./model')
 const signin = require("./routes/signin");
 
 //......................................mongo uri...................................................
-const uri =
-  "mongodb+srv://laundrycollab:Soa2KQDcBqdHvKmM@laundry.2rpjc1w.mongodb.net/?retryWrites=true&w=majority";
+// const MONGO_URI =
+//   "mongodb+srv://laundrycollab:Soa2KQDcBqdHvKmM@laundry.2rpjc1w.mongodb.net/?retryWrites=true&w=majority";
 // replace with your own database name
 //JWT_SECRET:"asdfghjkl"
 const options = {
@@ -16,7 +18,7 @@ const options = {
 };
 const port = 8080 || process.env.PORT;
 mongoose
-  .connect(uri, options)
+  .connect(process.env.MONGO_URI, options)
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.log(`Error connecting to MongoDB: ${err}`));
 
